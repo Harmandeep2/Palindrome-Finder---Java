@@ -1,0 +1,49 @@
+/** 
+ * PURPOSE:
+ * The purpose of this program is to directs the user to enter a word. 
+ * The program will print the word backwards and then inform the user if it is a palindrome or not.
+ * The program will treat the value inputted by the user as either all lowercase or all uppercase in order to get accurate results.
+ */
+package palindrome;
+
+    /**
+     * Name: Harmandeep Arneja
+     * Date: 17/2/2022
+     * Course Code: ICS 4U1
+     * Program Title: Palindrome Program
+     */
+
+// Imports a package that will provide an interface that enables the development of input methods that can be used with Java RE.
+import javax.swing.*;
+
+public class Palindrome {
+
+    public static void main(String[] args) {
+        
+        // Create a string variable. WIll be used to detect the palindrome.
+        String Reverse = "";
+        
+        // Collecting Input from the User and storing it
+        String UserStr = JOptionPane.showInputDialog("Words that are the same forwards and backwards are called Palindromes.\nThis program determines if a word is a Palindrome or not.\n\nEnter a word:");
+        String UserWord = UserStr.toLowerCase();    // Converts the letters in the word to all lowercase letters
+        
+        String UserStrReverse = ""; // Creating a string variable that will convert reverse the users word
+        
+        int StrLength = UserWord.length();  // Creating an int variable that will store the value of the word's length
+        
+        for (int i = StrLength - 1; i >= 0; i--)      // Creating a for loop that will reverse the users initial word
+            UserStrReverse = UserStrReverse + UserStr.charAt(i);  // Reverses the letters by taking the letters in the original word and replacing them in the opposite positions in the new word
+        
+        int length = UserWord.length();   // Creating an int variable that will store the value of the word's (lowercase letters) length
+        
+        for (int i = length - 1; i >= 0; i--)  // Creating a for loop that will reverse the all lowercase word in order for the output to be correct.
+            Reverse = Reverse + UserWord.charAt(i);  // Reverses the letters by taking the letters in the original word and replacing them in the opposite positions in the new word
+        
+        if (UserWord.equals(Reverse)) // Creating an if then else statement to output different scenarios
+            
+            JOptionPane.showMessageDialog(null, UserStr + " in reverse is " + UserStrReverse + "\nIt IS a palindrome." );   // If the reverse of the word is exactly the same
+        
+        else
+            JOptionPane.showMessageDialog(null, UserStr + " in reverse is " + UserStrReverse + "\nIt IS NOT a palindrome." );   // If it is not
+    }
+}
